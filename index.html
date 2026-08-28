@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riccardo.dev — Full Stack Java Developer</title>
+<meta name="description" content="Riccardo — Desenvolvedor Full Stack Java. Back-end robusto, front-end funcional, integrações sólidas.">
+<meta name="author" content="RICCARDO.DEV">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 356'><rect width='512' height='356' fill='%23009b3a'/><polygon points='256,30 480,178 256,326 32,178' fill='%23fedf00'/><circle cx='256' cy='178' r='105' fill='%23002776'/></svg>">
+
+<!--Link TailwindCSS-->
+<link rel="stylesheet" href="output.css">
+
+<!-- Fonte -->
+<style>
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('ttf');
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('ttf');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf') format('ttf');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('ttf');
+    font-weight: 400;
+    font-display: swap;
+  }
+</style>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0B0F14; }
+
+  ::selection { background: #7CC13B; color: #0B0F14; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #0B0F14; }
+  ::-webkit-scrollbar-thumb { background: #232C38; border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover { background: #7CC13B; }
+
+  /* focus visibility for a11y */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid #7CC13B;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  .terminal-dot { width: 11px; height: 11px; border-radius: 999px; }
+
+  .glow-btn { box-shadow: 0 0 0 0 rgba(124,193,59,0.5); transition: box-shadow .25s ease, transform .15s ease; }
+  .glow-btn:hover { box-shadow: 0 0 26px 2px rgba(124,193,59,0.45); transform: translateY(-1px); }
+  .glow-btn:active { transform: translateY(0); }
+
+  .code-line::before {
+    counter-increment: line;
+    content: counter(line);
+    color: #4A5566;
+    display: inline-block;
+    width: 1.6rem;
+    text-align: right;
+    margin-right: 1rem;
+    user-select: none;
+  }
+  .code-block { counter-reset: line; }
+
+  .avatar-frame {
+    background: conic-gradient(from 180deg at 50% 50%, #7CC13B, #4FD6C4, #7CC13B);
+  }
+
+  .tag-chip { border: 1px solid #232C38; background: #121821; }
+
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0%; height: 2px;
+    background: #7CC13B;
+    transition: width .25s ease;
+  }
+  .nav-underline:hover::after { width: 100%; }
+
+  .blink { animation: blink 1.1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+</head>
+
+<body class="bg-bg text-ink font-body antialiased">
+
+<!-- ================= HEADER ================= -->
+<header class="sticky top-0 z-50 border-b border-border/80 bg-bg/85 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <!-- IDE tab strip -->
+    <div class="flex items-center gap-2 pt-3 text-xs font-mono text-muted">
+      <span class="terminal-dot bg-[#ff5f56]"></span>
+      <span class="terminal-dot bg-[#ffbd2e]"></span>
+      <span class="terminal-dot bg-[#27c93f]"></span>
+      <span class="ml-3 px-3 py-1 rounded-t-md bg-surface border border-b-0 border-border text-ink/80 flex items-center gap-1.5">
+        portfolio.java <span class="text-sm leading-none">🇧🇷</span>
+      </span>
+    </div>
+
+    <nav class="flex items-center justify-between py-4">
+      <a href="#top" class="font-display font-bold text-lg tracking-tight text-ink">
+        riccardo<span class="text-accent">.dev</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 font-mono text-sm text-ink/80">
+        <li><a href="#top" class="nav-underline">Home</a></li>
+        <li><a href="#tecnologias" class="nav-underline">Tecnologias</a></li>
+        <li><a href="#contato" class="nav-underline">Contatos</a></li>
+      </ul>
+
+      <button id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden p-2 text-ink">
+        <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="md:hidden hidden pb-5 font-mono text-sm">
+      <ul class="flex flex-col gap-4 text-ink/80">
+        <li><a href="#top" class="mobile-link block">Home</a></li>
+        <li><a href="#tecnologias" class="mobile-link block">Tecnologias</a></li>
+        <li><a href="#contato" class="mobile-link block">Contatos</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SOBRE ================= -->
+<section id="top" class="relative overflow-hidden border-b border-border">
+  <div class="absolute inset-0 pointer-events-none opacity-[0.06]"
+       style="background-image: linear-gradient(#7CC13B 1px, transparent 1px), linear-gradient(90deg, #7CC13B 1px, transparent 1px); background-size: 44px 44px;"></div>
+
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-14 items-center">
+    <div class="reveal">
+      <p class="font-mono text-sm text-cyan mb-4 h-6">
+        <span id="typed-subtitle"></span><span class="blink text-cyan">_</span>
+      </p>
+      
+      <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+        RICCARDO<span class="text-accent">.DEV</span>
+      </h1>
+
+      <p class="mt-6 text-muted leading-relaxed max-w-md">
+        Sou desenvolvedor Full Stack Java, focado na criação de aplicações modernas,
+        eficientes e escaláveis. Trabalho tanto no desenvolvimento do back-end, regras
+        de negócio e integrações, quanto no front-end, desenvolvendo interfaces
+        funcionais e intuitivas.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#repositorios"
+           class="glow-btn inline-flex items-center gap-2 bg-accent text-bg font-mono font-semibold text-sm px-6 py-3 rounded-md hover:bg-accent/90">
+          PROJETOS
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contato" class="font-mono text-sm text-ink/80 border border-border rounded-md px-6 py-3 hover:border-accent hover:text-accent transition-colors">
+          fale comigo
+        </a>
+      </div>
+
+      <p class="mt-10 font-mono text-xs text-muted">
+        Tecnologias:
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <span class="tag-chip text-xs font-mono px-3 py-1.5 rounded text-ink/80">Java</span>
+      </div>
+    </div>
+
+    <div class="reveal flex justify-center md:justify-end">
+      <div class="relative">
+        <div class="avatar-frame w-64 h-64 sm:w-80 sm:h-80 rounded-full p-[3px]">
+          <div class="w-full h-full rounded-full bg-surface flex items-center justify-center overflow-hidden">
+            <img class="w-full h-full object-cover object-center" src="img/foto.jpg" alt="Foto de Perfil">
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -left-4 bg-surface border border-border rounded-lg px-4 py-2 font-mono text-xs shadow-lg">
+          <span class="text-accent">●</span> <span id="typed-badge"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TECNOLOGIAS ================= -->
+<section id="tecnologias" class="border-b border-border">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20">
+    <div class="reveal mb-10">
+      <p class="font-mono text-sm text-cyan mb-2">02 — stack</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl">Tecnologias</h2>
+    </div>
+
+    <div class="reveal bg-surface border border-border rounded-xl overflow-hidden">
+      <div class="flex items-center gap-2 px-5 py-3 border-b border-border font-mono text-xs text-muted">
+        <span class="terminal-dot bg-[#ff5f56]"></span>
+        <span class="terminal-dot bg-[#ffbd2e]"></span>
+        <span class="terminal-dot bg-[#27c93f]"></span>
+        <span class="ml-2">pom.xml</span>
+      </div>
+      <pre class="code-block font-mono text-[13px] sm:text-sm leading-7 p-5 overflow-x-auto"><code
+><span class="code-line text-muted">&lt;<span class="text-cyan">dependencies</span>&gt;</span>
+<span class="code-line"></span>
+<span class="code-line">  &lt;<span class="text-cyan">dependency</span>&gt;<span class="text-ink/90">Java</span> &amp; <span class="text-ink/90">Spring Boot</span></span>
+<span class="code-line">  <span class="text-muted">&lt;desc&gt;</span>APIs REST, regras de negócio, segurança com Spring Security<span class="text-muted">&lt;/desc&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line text-muted">&lt;/<span class="text-cyan">dependencies</span>&gt;</span></code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTATO ================= -->
+<section id="contato">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20 grid md:grid-cols-2 gap-14">
+    <div class="reveal">
+      <p class="font-mono text-sm text-cyan mb-2">03 — contato</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl mb-5">Vamos conversar</h2>
+      <p class="text-muted leading-relaxed max-w-sm mb-8">
+        Aberto a oportunidades, freelas e boas conversas sobre engenharia de
+        software. Responda o prompt ao lado ou me chame direto por um dos canais.
+      </p>
+
+      <div class="space-y-3 font-mono text-sm">
+        <a href="mailto:contato@riccardo.dev" class="flex items-center gap-3 text-ink/80 hover:text-accent transition-colors w-fit">
+          <span class="text-muted">email</span> contato@riccardo.dev
+        </a>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-ink/80 hover:text-accent transition-colors w-fit">
+          <span class="text-muted">github</span> github.com/riccardo-dev
+        </a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-ink/80 hover:text-accent transition-colors w-fit">
+          <span class="text-muted">linkedin</span> in/riccardo-dev
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal bg-surface border border-border rounded-xl overflow-hidden">
+      <div class="flex items-center gap-2 px-5 py-3 border-b border-border font-mono text-xs text-muted">
+        <span class="terminal-dot bg-[#ff5f56]"></span>
+        <span class="terminal-dot bg-[#ffbd2e]"></span>
+        <span class="terminal-dot bg-[#27c93f]"></span>
+        <span class="ml-2">~/Contato</span>
+      </div>
+
+      <form id="contactForm" class="p-6 space-y-5" novalidate>
+        <p class="font-mono text-xs text-muted">$ nova-mensagem <span class="blink text-accent">▌</span></p>
+
+        <div>
+          <label for="name" class="block font-mono text-xs text-muted mb-2">nome</label>
+          <input id="name" name="name" type="text" required maxlength="80" autocomplete="name"
+                 class="w-full bg-surface2 border border-border rounded-md px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent outline-none transition-colors"
+                 placeholder="seu nome">
+        </div>
+
+        <div>
+          <label for="email" class="block font-mono text-xs text-muted mb-2">email</label>
+          <input id="email" name="email" type="email" required maxlength="120" autocomplete="email"
+                 class="w-full bg-surface2 border border-border rounded-md px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent outline-none transition-colors"
+                 placeholder="voce@email.com">
+        </div>
+
+        <div>
+          <label for="message" class="block font-mono text-xs text-muted mb-2">mensagem</label>
+          <textarea id="message" name="message" required maxlength="600" rows="4"
+                    class="w-full bg-surface2 border border-border rounded-md px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent outline-none transition-colors resize-none"
+                    placeholder="conte um pouco sobre o projeto..."></textarea>
+        </div>
+
+        <div class="hidden" aria-hidden="true">
+          <label for="website">Não preencha este campo</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit"
+                class="glow-btn w-full bg-accent text-bg font-mono font-semibold text-sm px-6 py-3 rounded-md hover:bg-accent/90">
+          enviar mensagem
+        </button>
+
+        <p id="formStatus" class="font-mono text-xs text-muted min-h-[1rem]" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Rodapé ================= -->
+<footer class="border-t border-border">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-muted">
+    <p>© <span id="year"></span> riccardo.dev — todos os direitos reservados</p>
+    <p>build v1.0.0 · compilado com <span class="text-accent">Vontade</span> e Java</p>
+  </div>
+</footer>
+
+<!--JavaScript-->
+<script>
+  function typeWriter(text, elementId, speed = 80, callback) {
+    let i = 0;
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    el.innerHTML = "";
+    function type() {
+      if (i < text.length) {
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else if (callback) {
+        callback();
+      }
+    }
+    type();
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    typeWriter("// full-stack java developer", "typed-subtitle", 65, () => {
+      setTimeout(() => {
+        typeWriter("disponível para projetos", "typed-badge", 50);
+      }, 400);
+    });
+  });
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('iconOpen');
+  const iconClose = document.getElementById('iconClose');
+
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const honeypot = form.website.value.trim();
+    if (honeypot !== '') {
+      status.textContent = '';
+      form.reset();
+      return;
+    }
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name || !email || !message) {
+      status.textContent = '> erro: preencha todos os campos.';
+      status.classList.add('text-red-400');
+      return;
+    }
+    if (!emailPattern.test(email)) {
+      status.textContent = '> erro: informe um email válido.';
+      status.classList.add('text-red-400');
+      return;
+    }
+
+    status.classList.remove('text-red-400');
+    status.textContent = '> mensagem pronta — abrindo seu cliente de email...';
+
+    const subject = encodeURIComponent(`Contato via site — ${name}`);
+    const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:contato@riccardo.dev?subject=${subject}&body=${body}`;
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

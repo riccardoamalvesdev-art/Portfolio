@@ -47,8 +47,8 @@ Como este portfólio é uma aplicação estática baseada em HTML, CSS e JavaScr
 
 ## 📬 Contato
 
-* **E-mail:** contato@riccardo.dev
-* **LinkedIn:** [in/riccardo-dev](https://linkedin.com)
-* **GitHub:** [riccardo-dev](https://github.com)
+* **E-mail:** riccardoamalves.dev@gmail.com
+* **LinkedIn:** [in/riccardo-dev](https://www.linkedin.com/in/riccardoamalvesdev/)
+* **GitHub:** [riccardo-dev](https://github.com/riccardoamalvesdev-art)
 
 ---

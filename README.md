@@ -48,7 +48,7 @@ Como este portfólio é uma aplicação estática baseada em HTML, CSS e JavaScr
 ## ⚙️ Como Executar Online
 
 Apenas acesse o link oficial do meu portifólio:
-* https://github.com/riccardoamalvesdev-art/Portfolio
+* [Portifólio](https://riccardoamalvesdev-art.github.io/Portfolio/)
 
 ---
 
